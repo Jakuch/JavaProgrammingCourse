@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.VBox?>
+
+<VBox prefHeight="239.0" prefWidth="413.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="VaccineApplication.Controller">
+   <children>
+      <HBox prefHeight="130.0" prefWidth="413.0">
+         <children>
+            <VBox prefHeight="200.0" prefWidth="100.0">
+               <children>
+                  <Button fx:id="buttonStart" mnemonicParsing="false" prefHeight="40.0" prefWidth="105.0" text="Start" />
+                  <Button fx:id="buttonStop" mnemonicParsing="false" prefHeight="40.0" prefWidth="105.0" text="Stop" />
+               </children>
+            </VBox>
+            <VBox prefHeight="130.0" prefWidth="58.0">
+               <children>
+                  <TextField fx:id="daysIn" prefHeight="25.0" prefWidth="82.0" />
+                  <TextField fx:id="popSquareL" prefHeight="25.0" prefWidth="72.0" />
+                  <TextField fx:id="infProb" prefHeight="25.0" prefWidth="50.0" />
+                  <TextField fx:id="infProbVacc" prefHeight="25.0" prefWidth="50.0" />
+                  <TextField fx:id="vaccineProb" prefHeight="25.0" prefWidth="50.0" />
+               </children>
+            </VBox>
+            <VBox prefHeight="130.0" prefWidth="251.0">
+               <children>
+                  <Label prefHeight="26.0" prefWidth="246.0" text="Number of days person is infecting others" />
+                  <Label prefHeight="24.0" prefWidth="159.0" text="Population square side length" />
+                  <Label prefHeight="25.0" prefWidth="197.0" text="Infection probability (Lack of vaccine)" />
+                  <Label prefHeight="25.0" prefWidth="185.0" text="Infection probability (With vaccine)" />
+                  <Label prefHeight="26.0" prefWidth="210.0" text="Probability of person being vaccinated" />
+               </children>
+            </VBox>
+         </children>
+      </HBox>
+      <HBox prefHeight="22.0" prefWidth="413.0" />
+      <HBox minHeight="-Infinity" prefHeight="25.0" prefWidth="413.0">
+         <children>
+            <Label prefHeight="38.0" prefWidth="89.0" text="Days passed: " />
+            <TextField fx:id="daysOut" editable="false" prefHeight="25.0" prefWidth="50.0" />
+         </children>
+      </HBox>
+      <HBox minHeight="-Infinity" prefHeight="25.0" prefWidth="413.0">
+         <children>
+            <Label prefHeight="38.0" prefWidth="89.0" text="People infected: " />
+            <TextField fx:id="pplOut" editable="false" prefHeight="25.0" prefWidth="125.0" />
+            <Label fx:id="labelOut" prefHeight="34.0" prefWidth="191.0" />
+         </children>
+      </HBox>
+      <HBox minHeight="-Infinity" prefHeight="25.0" prefWidth="223.0">
+         <children>
+            <Label prefHeight="38.0" prefWidth="89.0" text="Population:" />
+            <TextField fx:id="popul" editable="false" prefHeight="25.0" prefWidth="125.0" />
+            <Label prefHeight="34.0" prefWidth="191.0" />
+         </children>
+      </HBox>
+   </children>
+</VBox>
