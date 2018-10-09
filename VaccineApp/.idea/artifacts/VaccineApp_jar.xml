@@ -1,0 +1,8 @@
+<component name="ArtifactManager">
+  <artifact type="jar" name="VaccineApp:jar">
+    <output-path>$PROJECT_DIR$/out/artifacts/VaccineApp_jar</output-path>
+    <root id="archive" name="VaccineApp.jar">
+      <element id="module-output" name="VaccineApp" />
+    </root>
+  </artifact>
+</component>

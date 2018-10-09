@@ -4,10 +4,12 @@ package VaccineApplication;
 public class Person {
     private boolean isSick;
     private boolean isVaccinated;
+    private int daysInfecting;
 
     public Person(boolean isSick, boolean isVaccinated) {
         this.isSick = isSick;
         this.isVaccinated = isVaccinated;
+        daysInfecting=1;
     }
 
     public boolean isSick() {
@@ -18,12 +20,20 @@ public class Person {
         isSick = sick;
     }
 
+    public void setDaysInfecting(int daysInfecting) {
+        this.daysInfecting = daysInfecting;
+    }
+
     public boolean isVaccinated() {
         return isVaccinated;
     }
 
     public void setVaccinated(boolean vaccinated) {
         isVaccinated = vaccinated;
+    }
+
+    public int getDaysInfecting() {
+        return daysInfecting;
     }
 
     @Override

@@ -10,7 +10,6 @@ import java.util.Random;
 
 public class Controller {
     private volatile boolean bExit;
-    private volatile boolean personExit;
     @FXML
     private Button buttonStart;
     @FXML
@@ -45,8 +44,7 @@ public class Controller {
             } catch (InterruptedException e) {
                 e.printStackTrace();
             }
-            infoBox("Input probability (double 0 - 1 values), length of the population square (int positive values ) and click start button. " +
-                    "\n                                                                             Let the infection begin >:D", "InfoBox");
+            infoBox("Input probability (double 0 - 1 values), length of the population square (int positive values ) and click start button. ", "Instructions");
         });
         message.start();
         bExit = false;
@@ -54,14 +52,9 @@ public class Controller {
         buttonStart.setOnAction(event -> {
             bExit = false;
             infectionThread();
-//            if (Integer.parseInt(pplOut.getText()) >= Integer.parseInt(popul.getText())) {
-//                labelOut.setText("Whole population has been infected!");
-//            }
         });
 
-        buttonStop.setOnAction(event -> {
-            bExit = true;
-        });
+        buttonStop.setOnAction(event -> bExit = true);
     }
 
     private static void infoBox(String message, String title) {
@@ -100,7 +93,7 @@ public class Controller {
                 //Infection spread
                 for (int i = 0; i < lengthLoopI; i++) {
                     for (int j = 0; j < lengthLoopJ; j++) {
-                        if (population[i][j].isSick()) {
+                        if (population[i][j].isSick() && population[i][j].getDaysInfecting()<=Integer.parseInt(daysIn.getText())) {
                             if (j < Integer.parseInt(popSquareL.getText()) - 1 && !population[i][j + 1].isSick()) {
                                 getSick = randomGenerator.nextInt(100);
                                 if (population[i][j + 1].isVaccinated()) {
@@ -133,6 +126,9 @@ public class Controller {
                                     population[i - 1][j].setSick(Double.parseDouble(infProb.getText()) * 100 > getSick);
                                 }
                             }
+                            population[i][j].setDaysInfecting(population[i][j].getDaysInfecting()+1);
+                        } else {
+
                         }
                     }
                 }
@@ -152,59 +148,6 @@ public class Controller {
         });
         infection.start();
     }
-
-//    private void singlePersonThread(int x, int y) {
-//        Thread singlePerson = new Thread(() -> {
-//            int getSick;
-//            int day = 1;
-//            while (day <= Integer.parseInt(daysIn.getText())) {
-//                if (population[x][y].isSick()) {
-//                    if (y < Integer.parseInt(popSquareL.getText()) - 1 && !population[x][y + 1].isSick()) {
-//                        getSick = randomGenerator.nextInt(100);
-//                        if (population[x][y + 1].isVaccinated()) {
-//                            population[x][y + 1].setSick(Double.parseDouble(infProbVacc.getText()) * 100 > getSick);
-//                        } else {
-//                            population[x][y + 1].setSick(Double.parseDouble(infProb.getText()) * 100 > getSick);
-//                        }
-//                    }
-//                    if (x < Integer.parseInt(popSquareL.getText()) - 1 && !population[x + 1][y].isSick()) {
-//                        getSick = randomGenerator.nextInt(100);
-//                        if (population[x + 1][y].isVaccinated()) {
-//                            population[x + 1][y].setSick(Double.parseDouble(infProbVacc.getText()) * 100 > getSick);
-//                        } else {
-//                            population[x + 1][y].setSick(Double.parseDouble(infProb.getText()) * 100 > getSick);
-//                        }
-//                    }
-//                    if (y > 0 && !population[x][y - 1].isSick()) {
-//                        getSick = randomGenerator.nextInt(100);
-//                        if (population[x][y - 1].isVaccinated()) {
-//                            population[x][y - 1].setSick(Double.parseDouble(infProbVacc.getText()) * 100 > getSick);
-//                        } else {
-//                            population[x][y - 1].setSick(Double.parseDouble(infProb.getText()) * 100 > getSick);
-//                        }
-//                    }
-//                    if (x > 0 && !population[x - 1][y].isSick()) {
-//                        getSick = randomGenerator.nextInt(100);
-//                        if (population[x - 1][y].isVaccinated()) {
-//                            population[x - 1][y].setSick(Double.parseDouble(infProbVacc.getText()) * 100 > getSick);
-//                        } else {
-//                            population[x - 1][y].setSick(Double.parseDouble(infProb.getText()) * 100 > getSick);
-//                        }
-//                    }
-//                }
-//                day++;
-//                try {
-//                    Thread.sleep(1000);
-//                } catch (InterruptedException e) {
-//                    e.printStackTrace();
-//                }
-//                if (day == Integer.parseInt(daysIn.getText())) {
-//                    break;
-//                }
-//            }
-//        });
-//        singlePerson.start();
-//    }
 
     private Person[][] populationGenerator() {
         int populationSize = Integer.parseInt(popSquareL.getText());
