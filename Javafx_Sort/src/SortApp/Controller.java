@@ -50,9 +50,6 @@ public class Controller {
 
     private volatile boolean secondTabIsRunnung;
 
-//dodac inne algorytmy sortujace
-//GUI -porownywane/ podglad sortowania
-
     public void initialize() {
 
         initCheckBoxes(firstSort, secondSort);
